@@ -25,17 +25,18 @@ jobs:
 
       - name: Create latest HTML redirect file
         run: |
-          cd my-first-book/book
-          cat > index.html <<EOF
+          cd my-first-book
+          mkdir ./latest
+          cat > ./latest/index.html <<EOF
           <!DOCTYPE html>
           <meta charset="utf-8">
           <meta http-equiv="refresh" content="0; URL=../666/">
           <link rel="canonical" href="../666/">
           EOF
 
-      - name: Deploy
+      - name: Set latest to point to tag
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./my-first-book/book
+          publish_dir: ./latest/
+          destination_dir: .my-first-book/latest/
