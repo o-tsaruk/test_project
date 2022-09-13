@@ -23,20 +23,9 @@ jobs:
           cd my-first-book
           mdbook build
 
-      - name: Create latest HTML redirect file
-        run: |
-          cd my-first-book
-          mkdir ./latest
-          cat > ./latest/index.html <<EOF
-          <!DOCTYPE html>
-          <meta charset="utf-8">
-          <meta http-equiv="refresh" content="0; URL=..test_project/666/">
-          <link rel="canonical" href="..test_project/666/">
-          EOF
-
-      - name: Set latest to point to tag
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./latest/
-          destination_dir: .my-first-book/latest/
+          publish_dir: ./my-first-book/book
