@@ -25,9 +25,8 @@ jobs:
 
       - name: Create latest HTML redirect file
         run: |
-          cd my-first-book
-          mkdir ./latest
-          cat > ./latest/index.html <<EOF
+          cd my-first-book/book
+          cat > index.html <<EOF
           <!DOCTYPE html>
           <meta charset="utf-8">
           <meta http-equiv="refresh" content="0; URL=../666/">
