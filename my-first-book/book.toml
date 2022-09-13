@@ -6,4 +6,5 @@ src = "src"
 title = "TEST book"
 
 [output.html]
-git-repository-url = "https://github.com/o-tsaruk/test_project/666"
+git-repository-url = "https://github.com/o-tsaruk/test_project"
+site-url = "/example-book/666"
